@@ -1,2 +1,3 @@
-# blackjack_game
-A simple blackjack game
+# Blackjack Game
+A simple Blackjack game
+-TBC-
