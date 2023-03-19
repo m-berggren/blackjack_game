@@ -1,47 +1,34 @@
-"""
-Skapa ett program som simulerar ett blackjack-spel mellan en spelare och en dator.
+class Card:
+    ranks = "Ess 2 3 4 5 6 7 8 9 10 Knekt Dam Kung".split()
+    suits = "Hjärter Spader Ruter Klöver".split()
 
-·         Spelet spelas med en vanlig kortlek som blandas innan varje runda.
+    bj_dict = {
+        "Ess": 11,
+        "2": 2,
+        "3": 3,
+        "4": 4,
+        "5": 5,
+        "6": 6,
+        "8": 8,
+        "9": 9,
+        "10": 10,
+        "Knekt": 11,
+        "Dam": 12,
+        "Kung": 13,
+    }
 
-·         Varje spelare får två kort i början av spelet. Datorn visar bara upp ett av sina kort.
+    def __init__(self, rank, suit):
+        self._rank = rank
+        self._suit = suit
 
-·         Spelaren kan välja att ta fler kort (hit) eller stanna på sina nuvarande kort (stand).
+    def give_card(self):
+        rank_value = str(self._rank)
 
-·         Spelaren kan fortsätta att ta kort tills hen når 21 poäng eller över.
+        return Card.bj_dict[rank_value]
 
-·         Om spelaren går över 21 poäng förlorar hen direkt.
-
-·         När spelaren stannar, spelar datorn sin tur. Datorn måste ta kort så länge summan av korten är mindre än 17 poäng och stanna när datorns kortsumma är 17 poäng eller mer.
-
-·         Om datorn går över 21 poäng vinner spelaren oavsett vilka kort spelaren har.
-
-·         Om varken spelaren eller datorn går över 21 poäng så vinner den som har högst kortsumma.
-"""
-
-from blackjack_classes import Computer, Deck, User
-
-
-def main():
-    print("\nVälkommen till Blackjack\n")
-    deck = Deck()
-    user = User(deck)
-    computer = Computer(deck)
-
-    user = user.play()
-
-    if user > 21:
-        print("\nDu förlorade.\n")
-        return
-    elif user == 21:
-        print("\nGrattis, du vann!\n")
-        return
-
-    computer = computer.play()
-
-    if computer <= 21 and computer > user:
-        print("\nDu förlorade.\n")
-    else:
-        print("\nGrattis, du vann!\n")
+    def __str__(self):
+        return Card.suits[self._suit], Card.ranks[self._rank]
 
 
-main()
+class Deck:
+    pass
