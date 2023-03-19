@@ -27,7 +27,7 @@ python3 blackjack.py
 Or, by running blackjack.py through your IDE, e.g. VSCode.
 
 
-## External libraries?
+## External libraries
 None
 
 ## Licence
