@@ -1,34 +1,32 @@
-class Card:
-    ranks = "Ess 2 3 4 5 6 7 8 9 10 Knekt Dam Kung".split()
-    suits = "Hjärter Spader Ruter Klöver".split()
-
-    bj_dict = {
-        "Ess": 11,
-        "2": 2,
-        "3": 3,
-        "4": 4,
-        "5": 5,
-        "6": 6,
-        "8": 8,
-        "9": 9,
-        "10": 10,
-        "Knekt": 11,
-        "Dam": 12,
-        "Kung": 13,
-    }
-
-    def __init__(self, rank, suit):
-        self._rank = rank
-        self._suit = suit
-
-    def give_card(self):
-        rank_value = str(self._rank)
-
-        return Card.bj_dict[rank_value]
-
-    def __str__(self):
-        return Card.suits[self._suit], Card.ranks[self._rank]
+from blackjack_classes import Computer, Deck, User
 
 
-class Deck:
-    pass
+def main():
+    """Main program sets up and evaluates boolean results."""
+
+    print("\nVälkommen till Blackjack\n")
+    deck = Deck()
+    user = User(deck)
+    computer = Computer(deck)
+
+    user = user.play()
+    computer = computer.play()
+
+    if user <= 21 and user > computer:
+        print("\nGrattis, du vann!\n")
+
+    elif computer <= 21 and computer > user:
+        print("Du förlorade.\n")
+
+    elif computer > 21:
+        print("Grattis, du vann!\n")
+
+    elif user > 21:
+        print("Du förlorade.\n")
+
+    elif user == computer:
+        print("Oavgjort.\n")
+
+
+if __name__ == "__main__":
+    main()
